@@ -1,0 +1,16 @@
+-cluster tendancy - https://www.datanovia.com/en/lessons/assessing-clustering-tendency/#statistical-methods
+
+
+
+
+-determine optimal number of cluster- https://www.datanovia.com/en/lessons/determining-the-optimal-number-of-clusters-3-must-know-methods/#nbclust-function-30-indices-for-choosing-the-best-number-of-clusters
+                                    -Hierarchical and K means has diff function to find optimal cluster
+
+
+
+
+-two types of clustering
+
+1. partitional -k means - https://uc-r.github.io/kmeans_clustering
+2. heirarchical-(2 types-AGNES and DIANA , AGNES uses 4 methods complete linkage, average,single,
+                and ward, DIANA uses no method, most popular is AGNES hc with ward mehod)- https://uc-r.github.io/hc_clustering

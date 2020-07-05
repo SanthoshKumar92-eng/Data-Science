@@ -1,0 +1,8 @@
+manipulation exercise link - https://r4ds.had.co.nz/transform.html
+
+
+shortcuts 1.Alt-(<-)
+          2.ctrl shft m (%>%)
+          3.ctrl shft c (comment or uncommnt single/multiple lines)
+          4.ctl enter (run code)
+          5.alt up/down (move a line of code up or down, no need to cut,paste)

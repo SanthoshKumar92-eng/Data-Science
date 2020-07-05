@@ -1,0 +1,19 @@
+K means
+1.omit nas, scale data
+2.apply k means function(need to mention k optimal clusters
+                         no need to do dist fun or mention dist method as it is euclidean by default,
+                         no need to mention type of clustering method)
+3.Apply (result)$cluster to see cluster group, its a vector
+4.Join the cluster grp to the data and compare with Hclust using table
+5.compare means of raw data and norm data by clusterwise also
+
+
+Hclust
+1.omit nas, scale data
+2.apply k means function(need to use dist method and it is euclidean method by default,
+                         no need to mention type of clustering method)->gives dendogram o/p
+3.cut the dendogram using cutree with number of optimal clusters to get cluster grp result
+3.Apply (result)$cluster to see cluster group, its a vector
+4.Join the cluster grp to the data and compare with Hclust using table
+5.compare means of raw data and norm data by clusterwise
+

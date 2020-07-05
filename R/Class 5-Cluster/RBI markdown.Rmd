@@ -1,0 +1,129 @@
+---
+title: "RBI"
+author: "Santhosh Kumar Krishnan"
+date: "5/21/2020"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+  word_document: default
+---
+1.READ DATA AND INSTALL LIBRARIES
+```{r}
+RBI <- read.csv("D:/Data Science/Dr Vinod online classes/Class 5-Cluster/RBI.csv")
+head(RBI,3)
+library(dplyr)
+library(factoextra)
+library(cluster)
+```
+
+2.REMOVE THE RESPONSE VARIABLE
+
+```{r}
+df <- RBI[,-1]
+rownames(df) <- RBI[,1]
+head(df,3)
+```
+
+3.CHECK NAs AND SCALE THE DATA
+
+```{r}
+summary(df)#no NAs
+df <- scale(df)#scaled data
+head(df)
+```
+
+4.FIND EUCLIDEAN DIST FOR SAMPLE DATA
+
+```{r}
+ind <- sample(1:nrow(df),15,replace = T)
+df15 <- df[ind,]
+df15_dist <- dist(df15)
+
+
+```
+
+5.CHECK FOR CLUSTER FORMATION
+
+```{r}
+fviz_dist(df15_dist)
+```
+
+6.NUMBER OF CLUSTER USING WSS
+
+```{r}
+fviz_nbclust(df,kmeans,method='wss')+geom_vline(xintercept = 5,linetype=7,col='green')
+```
+
+7.K MEANS
+
+```{r}
+df.km=kmeans(df,5,nstart=20)
+df.km
+df.km$cluster
+```
+
+8.ADD MEMBERSHIP TO THE DATA
+
+```{r}
+RBI_1 <- cbind(RBI,Clusters=df.km$cluster)
+head(RBI_1,3)
+```
+
+9.HEIRARCHICAL CLUSTEING
+
+```{r}
+df.dist <- dist(df,method="euclidean")
+df.hc <- hclust(df.dist,method='ward.D2')
+```
+
+10.VISUALIZE DENDOGRAM
+
+```{r}
+fviz_dend(df.hc)
+```
+
+11.CLUSTERING USING CUTREE
+
+```{r}
+grp <- cutree(df.hc,k=5)
+```
+
+12.ADD MEMBERSHIP TO THE DATA
+
+```{r}
+RBI_2 <- cbind(RBI,clusters=grp)
+head(RBI_2,3)
+```
+
+13.COMPARISION OF KMEANS AND HCLUST
+
+```{r}
+table(df.km$cluster,grp)
+
+```
+
+14.K MEANS CLUSTERING
+
+```{r}
+fviz_cluster(list(cluster=grp, data = df), palette = "jco",ggtheme = theme_classic())
+```
+
+15.HIERARCHICAL CLUSTERING
+
+```{r}
+fviz_cluster(df.km, data = df, palette = "jco",ggtheme = theme_minimal())
+```
+16.PROFILING KMEANS AND HCLUST GROUPS OF ORIGINAL DATA
+
+```{r}
+aggregate(RBI[,-1],by=list(df.km$cluster),mean)
+aggregate(RBI[,-1],by=list(grp),mean)
+
+```
+
+
+CONCLUSION
+1.Kmeans Clustering has 5 clusters of sizes 10,13,6,2,5.
+
+2.Heirarchical clustering 5 clusters of sizes 10,14,6,2,4.
