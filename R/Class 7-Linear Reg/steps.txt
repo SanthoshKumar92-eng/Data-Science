@@ -1,0 +1,10 @@
+model building and interpretation
+
+http://www.sthda.com/english/articles/40-regression-analysis/165-linear-regression-essentials-in-r/
+
+
+
+
+Assumptions
+
+http://www.sthda.com/english/articles/39-regression-model-diagnostics/161-linear-regression-assumptions-and-diagnostics-in-r-essentials/
