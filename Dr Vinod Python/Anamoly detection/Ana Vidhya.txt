@@ -1,0 +1,3 @@
+https://medium.com/analytics-vidhya/introduction-to-anomaly-detection-using-machine-learning-with-a-case-study-part-two-f78243f74d2f
+
+httpswww.analyticsvidhya.comblog201902outlier-detection-python-pyod
